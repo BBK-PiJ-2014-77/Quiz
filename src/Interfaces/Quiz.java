@@ -1,3 +1,5 @@
+package Interfaces;
+
 import java.io.Serializable;
 
 /**
@@ -14,7 +16,7 @@ public interface Quiz extends Serializable {
 
     /**
      * gets a question specified by the value of the int
-     * @return Question question
+     * @return Interfaces.Question question
      */
 
     Question getQuestion(int position);

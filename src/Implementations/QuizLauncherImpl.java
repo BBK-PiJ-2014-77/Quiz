@@ -1,3 +1,8 @@
+package Implementations;
+
+import Interfaces.QuizLauncher;
+import Interfaces.QuizServer;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -21,7 +26,7 @@ public class QuizLauncherImpl implements QuizLauncher {
             LocateRegistry.createRegistry(1099);
             QuizServer QuizServer = new QuizServerImpl();
             String registryHost = "//localhost/";
-            String serviceName = "Quiz";
+            String serviceName = "Interfaces.Quiz";
             Naming.rebind(registryHost + serviceName, QuizServer);
         } catch (MalformedURLException ex) {
             ex.printStackTrace();

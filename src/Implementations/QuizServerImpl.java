@@ -1,3 +1,9 @@
+package Implementations;
+
+import Interfaces.Player;
+import Interfaces.Quiz;
+import Interfaces.QuizServer;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.LinkedList;

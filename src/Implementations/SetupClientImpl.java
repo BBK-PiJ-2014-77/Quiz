@@ -1,3 +1,9 @@
+package Implementations;
+
+import Interfaces.Quiz;
+import Interfaces.QuizServer;
+import Interfaces.SetupClient;
+
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -30,7 +36,7 @@ public class SetupClientImpl implements SetupClient {
      Remote service = null;
 
         try{
-            service = Naming.lookup("//localhost:1099/Quiz");
+            service = Naming.lookup("//localhost:1099/Interfaces.Quiz");
         } catch (NotBoundException e){
             e.printStackTrace();
             System.out.println("1");
@@ -50,7 +56,7 @@ public class SetupClientImpl implements SetupClient {
             System.out.println("4");
         }
 
-        System.out.println("Getting Quiz name");
+        System.out.println("Getting Interfaces.Quiz name");
 
         try {
             Quiz returnedQuiz = QuizService.launchQuiz(0);

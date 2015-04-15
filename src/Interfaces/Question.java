@@ -1,3 +1,5 @@
+package Interfaces;
+
 import java.io.Serializable;
 
 /**
@@ -7,7 +9,7 @@ import java.io.Serializable;
  */
 public interface Question extends Serializable {
     /**
-     * returns the Question string.
+     * returns the Interfaces.Question string.
      * @return String question
      */
     String getQuestion();
@@ -25,7 +27,7 @@ public interface Question extends Serializable {
     int CorrectValue();
 
     /**
-     * creates the Question String
+     * creates the Interfaces.Question String
      */
 
     void addQuestion(String Question);

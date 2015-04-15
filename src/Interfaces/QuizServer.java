@@ -1,3 +1,8 @@
+package Interfaces;
+
+import Interfaces.Player;
+import Interfaces.Quiz;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
@@ -17,7 +22,7 @@ public interface QuizServer extends Remote {
     /**
      * Method to carry out chosen quiz
      * @param QuizNumber
-     * @return Quiz
+     * @return Interfaces.Quiz
      */
 
     Quiz launchQuiz(int QuizNumber) throws RemoteException;
@@ -32,7 +37,7 @@ public interface QuizServer extends Remote {
     /**
      * Method to end quiz and return the winner
      * @param QuizNumber
-     * @return Player Winner
+     * @return Interfaces.Player Winner
      */
 
     Player endQuiz(int QuizNumber) throws RemoteException;
