@@ -21,7 +21,7 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
 
     @Override
     public List getQuizzes() {
-        return null;
+        return QuizList;
     }
 
     @Override
@@ -34,6 +34,7 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
     public void setQuiz(Quiz NewQuiz) {
 
         QuizList.add(NewQuiz);
+        System.out.println("Quizadded");
 
     }
 
@@ -45,5 +46,10 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
     @Override
     public void setPlayer(Player newPlayer) {
 
+    }
+
+    @Override
+    public int ReturnQuestionNumber(int Quiz) {
+        return QuizList.get(Quiz).returnQuestionNumber();
     }
 }

@@ -22,16 +22,21 @@ public class QuizImpl implements Quiz {
 
     @Override
     public void addQuestion(Question question) {
-
+        QuestionList.add(question);
     }
 
     @Override
     public Question getQuestion(int position) {
-        return null;
+        return QuestionList.get(position);
     }
 
     @Override
     public String getName() {
         return Quizname;
+    }
+
+    @Override
+    public int returnQuestionNumber() {
+        return QuestionList.size();
     }
 }

@@ -6,6 +6,16 @@ package Interfaces;
 public interface SetupClient {
 
 
+    /**
+     * Method to send a new Quiz to the server
+     */
+    void addQuiz();
+
+
+    /**
+     * Method to end a quiz on the server
+     */
+    void endQuiz();
 
 
 }

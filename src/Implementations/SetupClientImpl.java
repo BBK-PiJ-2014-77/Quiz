@@ -1,5 +1,6 @@
 package Implementations;
 
+import Interfaces.Question;
 import Interfaces.Quiz;
 import Interfaces.QuizServer;
 import Interfaces.SetupClient;
@@ -19,25 +20,50 @@ public class SetupClientImpl implements SetupClient {
 
 
 
-    public static void main(String[] args) {
-
-        launch();
-
-    }
 
 
-    public static void launch() {
+    @Override
+    public void addQuiz() {
 
-    System.out.println("please name the quiz");
+        /**
+         * Create quiz and name it
+         */
+
+        System.out.println("please name the quiz");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
         Quiz newQuiz = new QuizImpl(name);
 
-     Remote service = null;
+        /**
+         * add the questions ans answers
+         */
 
-        try{
+        System.out.println("How many Questions?");
+        String numberquest = in.nextLine();
+        int num = Integer.parseInt(numberquest);
+
+        System.out.println("How many Multiple choice answers per Question?");
+        String numberanswer = in.nextLine();
+        int numanswer = Integer.parseInt(numberquest);
+
+        for (int i = 0; i < num; i++) {
+            System.out.println("please add a question");
+            Question Quest = new QuestionImpl();
+            Quest.addQuestion(in.nextLine());
+            newQuiz.addQuestion(Quest);
+            String[] AnswerOptions = new String[numanswer];
+            for (int j = 0; j < numanswer; j++) {
+                System.out.println("Please add an answer");
+                AnswerOptions[j] = in.nextLine();
+            }
+            Quest.addAnswers(AnswerOptions);
+        }
+
+        Remote service = null;
+
+        try {
             service = Naming.lookup("//localhost:1099/Interfaces.Quiz");
-        } catch (NotBoundException e){
+        } catch (NotBoundException e) {
             e.printStackTrace();
             System.out.println("1");
         } catch (MalformedURLException e) {
@@ -49,23 +75,50 @@ public class SetupClientImpl implements SetupClient {
         }
         QuizServer QuizService = (QuizServer) service;
 
-        try{
-             QuizService.setQuiz(newQuiz);
-        } catch (RemoteException e){
+        try {
+            QuizService.setQuiz(newQuiz);
+        } catch (RemoteException e) {
             e.printStackTrace();
             System.out.println("4");
         }
 
-        System.out.println("Getting Interfaces.Quiz name");
+
 
         try {
-            Quiz returnedQuiz = QuizService.launchQuiz(0);
-            System.out.println(returnedQuiz.getName());
-        } catch (RemoteException e ){
-            e.printStackTrace();
-            System.out.println("4");
-        }
+            for (int k = 0; k < QuizService.getQuizzes().size(); k++) {
 
+                System.out.println("Getting Quiz name");
+
+                try {
+                    Quiz returnedQuiz = QuizService.launchQuiz(k);
+                    System.out.println(returnedQuiz.getName());
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                    System.out.println("4");
+                }
+
+                System.out.println("Getting Quiz Questions and Answers");
+
+                try {
+                    Quiz returnedQuiz = QuizService.launchQuiz(k);
+                    for (int i = 0; i < returnedQuiz.returnQuestionNumber(); i++) {
+                        System.out.println(returnedQuiz.getQuestion(i).getQuestion());
+                        for (int j = 0; j < returnedQuiz.getQuestion(i).getAnswers().length; j++) {
+                            System.out.println(returnedQuiz.getQuestion(i).getAnswers()[j]);
+                        }
+                    }
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                    System.out.println("4");
+                }
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+        @Override
+    public void endQuiz() {
 
     }
 }

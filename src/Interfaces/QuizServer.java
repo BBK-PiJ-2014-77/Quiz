@@ -49,6 +49,12 @@ public interface QuizServer extends Remote {
      */
     void setPlayer(Player newPlayer) throws RemoteException;
 
+    /**
+     * Method returns the number of questions in quiz
+     */
+
+    int ReturnQuestionNumber(int Quiz) throws RemoteException;
+
 
 
 }

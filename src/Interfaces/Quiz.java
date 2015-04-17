@@ -28,5 +28,13 @@ public interface Quiz extends Serializable {
 
     String getName();
 
+    /**
+     * Method to return number of questions in the Quiz
+     */
+
+    int returnQuestionNumber();
+
+
+
 
 }
