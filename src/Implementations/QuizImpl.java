@@ -1,5 +1,6 @@
 package Implementations;
 
+import Interfaces.Player;
 import Interfaces.Question;
 import Interfaces.Quiz;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public class QuizImpl implements Quiz {
 
     List<Question> QuestionList = new LinkedList<Question>();
+    Player HighScorer = new PlayerImpl();
+
     String Quizname = null;
     int Answernum;
     int Questionnum;
@@ -47,6 +50,20 @@ public class QuizImpl implements Quiz {
     @Override
     public int returnAnswerNumber() {
         return Answernum;
+    }
+
+    @Override
+    public void setHighScorer(Player player) {
+
+
+            this.HighScorer = player;
+
+
+    }
+
+    @Override
+    public int getHighScore() {
+        return HighScorer.getScore();
     }
 
 

@@ -1,5 +1,6 @@
 package Implementations;
 
+import Interfaces.Player;
 import Interfaces.PlayerClient;
 import Interfaces.Quiz;
 import Interfaces.QuizServer;
@@ -36,7 +37,7 @@ public class PlayerClientImpl implements PlayerClient {
     }
 
     @Override
-    public int PlayQuiz(Quiz ChosenQuiz) {
+    public void PlayQuiz(Quiz ChosenQuiz) {
 
         int score = 0;
 
@@ -61,6 +62,20 @@ public class PlayerClientImpl implements PlayerClient {
             }
 
         }
-        return score;
+
+        System.out.println("Your Score was " + score);
+
+        if (score > ChosenQuiz.getHighScore()){
+
+            System.out.println("New High Score!!");
+            System.out.println("Please put your name");
+            Scanner in = new Scanner(System.in);
+            String input = in.nextLine();
+            Player newHighScorer = new PlayerImpl();
+            newHighScorer.SetName(input);
+            newHighScorer.SetScore(score);
+            ChosenQuiz.setHighScorer(newHighScorer);
+        }
+
     }
 }

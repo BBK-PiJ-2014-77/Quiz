@@ -23,5 +23,16 @@ public interface Player extends Serializable {
 
     String GetName();
 
+    /**
+     * Method to add score for player
+     */
+
+    void SetScore(int score);
+
+    /**
+     * Method to get score for player
+     */
+
+    int getScore();
 
 }

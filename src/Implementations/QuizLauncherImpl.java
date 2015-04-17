@@ -1,9 +1,6 @@
 package Implementations;
 
-import Interfaces.Question;
-import Interfaces.Quiz;
-import Interfaces.QuizLauncher;
-import Interfaces.QuizServer;
+import Interfaces.*;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -45,7 +42,10 @@ public class QuizLauncherImpl implements QuizLauncher {
 
                     String[] Split1 = Line.split(",");
 
-                    if (Split1.length == 4){
+              //      System.out.println(Split1.length);
+
+                    if (Split1.length == 6){
+
 
                         int quest = Integer.parseInt(Split1[2]);
                         int ans = Integer.parseInt(Split1[3]);
@@ -74,6 +74,13 @@ public class QuizLauncherImpl implements QuizLauncher {
                             newQuestion.addAnswers(Split3,CorAn);
 
                             NewQuiz.addQuestion(newQuestion);
+
+                            Player HighScorer = new PlayerImpl();
+                            HighScorer.SetName(Split1[4]);
+                            int HighScore = Integer.parseInt(Split1[5]);
+                            HighScorer.SetScore(HighScore);
+
+                            NewQuiz.setHighScorer(HighScorer);
 
                             }
 

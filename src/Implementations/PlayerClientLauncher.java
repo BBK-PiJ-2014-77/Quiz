@@ -52,8 +52,8 @@ public class PlayerClientLauncher{
         int innum = Integer.parseInt(input);
 
         try {
-           int score =  NewClient.PlayQuiz(QuizService.launchQuiz(innum));
-            System.out.println("Your score was " + score );
+           NewClient.PlayQuiz(QuizService.launchQuiz(innum));
+
         } catch (RemoteException e) {
             e.printStackTrace();
         }

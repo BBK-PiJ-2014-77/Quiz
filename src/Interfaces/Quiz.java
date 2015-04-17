@@ -1,5 +1,7 @@
 package Interfaces;
 
+import Implementations.PlayerImpl;
+
 import java.io.Serializable;
 
 /**
@@ -39,6 +41,18 @@ public interface Quiz extends Serializable {
      */
 
     int returnAnswerNumber();
+
+    /**
+     * Method to add high score
+     */
+
+    void setHighScorer(Player player);
+
+    /**
+     * Method to get highscore
+     */
+
+    int getHighScore();
 
 
 
