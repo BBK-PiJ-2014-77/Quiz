@@ -36,7 +36,7 @@ public interface Question extends Serializable {
      * creates answer array
      */
 
-    void addAnswers(String[] Answers);
+    void addAnswers(String[] Answers, int correct);
 
 
 }

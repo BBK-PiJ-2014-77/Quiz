@@ -34,6 +34,12 @@ public interface Quiz extends Serializable {
 
     int returnQuestionNumber();
 
+    /**
+     * Method to retunr the number of Mulit choice answers per question
+     */
+
+    int returnAnswerNumber();
+
 
 
 

@@ -13,10 +13,14 @@ public class QuizImpl implements Quiz {
 
     List<Question> QuestionList = new LinkedList<Question>();
     String Quizname = null;
+    int Answernum;
+    int Questionnum;
 
-    public QuizImpl(String name){
+    public QuizImpl(String name, int QuestionNum, int Answernum){
 
         Quizname = name;
+        this.Answernum = Answernum;
+        this.Questionnum = QuestionNum;
 
     }
 
@@ -37,6 +41,13 @@ public class QuizImpl implements Quiz {
 
     @Override
     public int returnQuestionNumber() {
-        return QuestionList.size();
+        return Questionnum;
     }
+
+    @Override
+    public int returnAnswerNumber() {
+        return Answernum;
+    }
+
+
 }

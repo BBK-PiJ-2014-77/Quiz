@@ -32,7 +32,7 @@ public class SetupClientImpl implements SetupClient {
         System.out.println("please name the quiz");
         Scanner in = new Scanner(System.in);
         String name = in.nextLine();
-        Quiz newQuiz = new QuizImpl(name);
+
 
         /**
          * add the questions ans answers
@@ -46,6 +46,8 @@ public class SetupClientImpl implements SetupClient {
         String numberanswer = in.nextLine();
         int numanswer = Integer.parseInt(numberquest);
 
+        Quiz newQuiz = new QuizImpl(name, num, numanswer);
+
         for (int i = 0; i < num; i++) {
             System.out.println("please add a question");
             Question Quest = new QuestionImpl();
@@ -56,7 +58,12 @@ public class SetupClientImpl implements SetupClient {
                 System.out.println("Please add an answer");
                 AnswerOptions[j] = in.nextLine();
             }
-            Quest.addAnswers(AnswerOptions);
+
+            System.out.println("Which is correct?");
+            String Correct = in.nextLine();
+            int cor = Integer.parseInt(Correct);
+
+            Quest.addAnswers(AnswerOptions, cor);
         }
 
         Remote service = null;

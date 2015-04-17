@@ -47,7 +47,10 @@ public class QuizLauncherImpl implements QuizLauncher {
 
                     if (Split1.length == 4){
 
-                Quiz NewQuiz = new QuizImpl(Split1[1]);
+                        int quest = Integer.parseInt(Split1[2]);
+                        int ans = Integer.parseInt(Split1[3]);
+
+                Quiz NewQuiz = new QuizImpl(Split1[1],quest, ans);
                         int QuestionNumber = Integer.parseInt(Split1[2]);
                         int AnswerNumber = Integer.parseInt(Split1[3]);
 
@@ -65,8 +68,10 @@ public class QuizLauncherImpl implements QuizLauncher {
 
                             Question newQuestion = new QuestionImpl();
 
+                            int CorAn = Integer.parseInt(Split2[2]);
+
                             newQuestion.addQuestion(Split2[1]);
-                            newQuestion.addAnswers(Split3);
+                            newQuestion.addAnswers(Split3,CorAn);
 
                             NewQuiz.addQuestion(newQuestion);
 

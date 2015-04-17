@@ -9,6 +9,7 @@ public class QuestionImpl implements Question {
 
     String Quest = null;
     String[] Answers = null;
+    int Correct;
 
     @Override
     public String getQuestion() {
@@ -22,7 +23,7 @@ public class QuestionImpl implements Question {
 
     @Override
     public int CorrectValue() {
-        return 0;
+        return Correct;
     }
 
     @Override
@@ -31,7 +32,8 @@ public class QuestionImpl implements Question {
     }
 
     @Override
-    public void addAnswers(String[] Answers) {
+    public void addAnswers(String[] Answers, int correct) {
         this.Answers = Answers;
+        this.Correct = correct;
     }
 }
