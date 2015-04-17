@@ -16,12 +16,25 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
 
     private List<Quiz> QuizList = new LinkedList<Quiz>();
 
+    private Object Lock = new Object();
+
     public QuizServerImpl() throws RemoteException {
     }
 
     @Override
     public List getQuizzes() {
-        return QuizList;
+
+        synchronized (Lock) {
+
+            List<String> Quiznamelist = new LinkedList<String>();
+
+            for (int i = 0; i < QuizList.size(); i++) {
+                Quiznamelist.add(QuizList.get(i).getName());
+            }
+
+            return Quiznamelist;
+
+        }
     }
 
     @Override

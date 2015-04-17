@@ -44,9 +44,9 @@ public class PlayerClientLauncher{
 
         try{
             int NumberofQuizzes =  QuizService.getQuizzes().size();
-            List<QuizImpl> retrievedquizzes = (List<QuizImpl>) QuizService.getQuizzes();
+            List<String> retrievedquizzes = (List<String>) QuizService.getQuizzes();
             for (int i = 0; i < NumberofQuizzes; i++) {
-                System.out.println(retrievedquizzes.get(i).getName());
+                System.out.println(retrievedquizzes.get(i));
             }
         } catch (RemoteException e){
             e.printStackTrace();
