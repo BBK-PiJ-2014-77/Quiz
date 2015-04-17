@@ -9,6 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Created by digibrose on 15/04/2015.
@@ -42,17 +43,20 @@ public class PlayerClientLauncher{
         }
         QuizServer QuizService = (QuizServer) service;
 
-        try{
-            int NumberofQuizzes =  QuizService.getQuizzes().size();
-            List<String> retrievedquizzes = (List<String>) QuizService.getQuizzes();
-            for (int i = 0; i < NumberofQuizzes; i++) {
-                System.out.println(retrievedquizzes.get(i));
-            }
-        } catch (RemoteException e){
-            e.printStackTrace();
-            System.out.println("1");
-        }
+        PlayerClient NewClient = new PlayerClientImpl();
+        NewClient.GetQuizzes(QuizService);
 
+        System.out.println("Which would you like to play?");
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        int innum = Integer.parseInt(input);
+
+        try {
+           int score =  NewClient.PlayQuiz(QuizService.launchQuiz(innum));
+            System.out.println("Your score was " + score );
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
     }
 }
