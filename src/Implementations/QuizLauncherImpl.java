@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
+import java.util.Scanner;
 
 /**
  * Created by digibrose on 15/04/2015.
@@ -83,12 +84,23 @@ public class QuizLauncherImpl implements QuizLauncher {
                 e.printStackTrace();
             }
 
+            System.out.println("Type E to exit");
+            Scanner in = new Scanner(System.in);
+            String input = in.nextLine();
+            if (input.charAt(0) == 'E'){
+                System.out.println("Bye");
+                QuizServer.Flush();
+                System.exit(0);
+            }
+
 
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         } catch (RemoteException ex){
             ex.printStackTrace();
         }
+
+
 
     }
 }

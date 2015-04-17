@@ -65,4 +65,9 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
     public int ReturnQuestionNumber(int Quiz) {
         return QuizList.get(Quiz).returnQuestionNumber();
     }
+
+    @Override
+    public void Flush() {
+
+    }
 }

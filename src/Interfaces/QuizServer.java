@@ -55,6 +55,12 @@ public interface QuizServer extends Remote {
 
     int ReturnQuestionNumber(int Quiz) throws RemoteException;
 
+    /**
+     * Method to flush server on exit
+     */
+
+    void Flush()throws RemoteException;
+
 
 
 }
