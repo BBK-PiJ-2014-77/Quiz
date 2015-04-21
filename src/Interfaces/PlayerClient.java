@@ -15,7 +15,7 @@ public interface PlayerClient {
  * Gets the quiz and allows player to play it then returns the score
  */
 
-    void PlayQuiz(Quiz ChosenQuiz);
+    Player PlayQuiz(Quiz ChosenQuiz);
 
 
 }

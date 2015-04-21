@@ -59,6 +59,14 @@ public interface QuizServer extends Remote {
      * Method to flush server on exit
      */
 
+    /**
+     * Set a new high scorer on the server
+     * @param Quiz
+     * @param HighScorer
+     */
+
+    void SetHighScorer(int Quiz, Player HighScorer)throws RemoteException;
+
     void Flush()throws RemoteException;
 
 

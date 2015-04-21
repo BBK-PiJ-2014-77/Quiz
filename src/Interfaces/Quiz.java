@@ -52,7 +52,7 @@ public interface Quiz extends Serializable {
      * Method to get highscore
      */
 
-    int getHighScore();
+    Player getHighScorer();
 
 
 

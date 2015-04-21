@@ -1,5 +1,6 @@
 package Implementations;
 
+import Interfaces.Player;
 import Interfaces.PlayerClient;
 import Interfaces.QuizServer;
 
@@ -52,7 +53,9 @@ public class PlayerClientLauncher{
         int innum = Integer.parseInt(input);
 
         try {
-           NewClient.PlayQuiz(QuizService.launchQuiz(innum));
+          Player HighScorer = NewClient.PlayQuiz(QuizService.launchQuiz(innum));
+
+            QuizService.SetHighScorer(innum, HighScorer);
 
         } catch (RemoteException e) {
             e.printStackTrace();

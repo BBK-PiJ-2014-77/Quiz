@@ -57,13 +57,14 @@ public class QuizImpl implements Quiz {
 
 
             this.HighScorer = player;
+        System.out.println("New High Scorer Set " + player.GetName());
 
 
     }
 
     @Override
-    public int getHighScore() {
-        return HighScorer.getScore();
+    public Player getHighScorer() {
+        return HighScorer;
     }
 
 

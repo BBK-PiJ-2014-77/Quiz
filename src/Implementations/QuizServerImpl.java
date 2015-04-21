@@ -71,6 +71,13 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
     }
 
     @Override
+    public void SetHighScorer(int Quiz, Player HighScorer) {
+
+        QuizList.get(Quiz).setHighScorer(HighScorer);
+
+    }
+
+    @Override
     public void Flush() {
 
         PrintWriter out = null;
@@ -83,8 +90,10 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
 
                 int Questnum = QuizList.get(i).returnQuestionNumber();
                 int Ansernum = QuizList.get(i).returnAnswerNumber();
+                String HighScorer = QuizList.get(i).getHighScorer().GetName();
+                int HighScore = QuizList.get(i).getHighScorer().getScore();
 
-                out.println(i + "," + QuizList.get(i).getName() + "," + Questnum + "," + Ansernum);
+                out.println(i + "," + QuizList.get(i).getName() + "," + Questnum + "," + Ansernum + "," + HighScorer + "," + HighScore);
 
                 for (int j = 0; j < Questnum; j++) {
 

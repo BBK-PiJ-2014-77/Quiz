@@ -37,7 +37,7 @@ public class PlayerClientImpl implements PlayerClient {
     }
 
     @Override
-    public void PlayQuiz(Quiz ChosenQuiz) {
+    public Player PlayQuiz(Quiz ChosenQuiz) {
 
         int score = 0;
 
@@ -65,7 +65,7 @@ public class PlayerClientImpl implements PlayerClient {
 
         System.out.println("Your Score was " + score);
 
-        if (score > ChosenQuiz.getHighScore()){
+        if (score > ChosenQuiz.getHighScorer().getScore()){
 
             System.out.println("New High Score!!");
             System.out.println("Please put your name");
@@ -74,8 +74,10 @@ public class PlayerClientImpl implements PlayerClient {
             Player newHighScorer = new PlayerImpl();
             newHighScorer.SetName(input);
             newHighScorer.SetScore(score);
-            ChosenQuiz.setHighScorer(newHighScorer);
+             ChosenQuiz.setHighScorer(newHighScorer);
         }
+
+        return ChosenQuiz.getHighScorer();
 
     }
 }
