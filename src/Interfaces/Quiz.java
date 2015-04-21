@@ -54,7 +54,30 @@ public interface Quiz extends Serializable {
 
     Player getHighScorer();
 
+    /**
+     * Method to give an Id to the Quiz
+     * @param Id
+     */
 
+    void setId(int Id);
 
+    /**
+     * Method to get Id from Quiz;
+     */
+
+    int getId();
+
+    /**
+     * Method to set the Quiz status
+     */
+
+    void setStatus(boolean status);
+
+    /**
+     * Method to get Status
+     * @return boolean Status
+     */
+
+    boolean getStatus();
 
 }

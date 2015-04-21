@@ -14,6 +14,8 @@ public class QuizImpl implements Quiz {
 
     List<Question> QuestionList = new LinkedList<Question>();
     Player HighScorer = new PlayerImpl();
+    int Id;
+    boolean status = true;
 
     String Quizname = null;
     int Answernum;
@@ -24,6 +26,7 @@ public class QuizImpl implements Quiz {
         Quizname = name;
         this.Answernum = Answernum;
         this.Questionnum = QuestionNum;
+
 
     }
 
@@ -65,6 +68,28 @@ public class QuizImpl implements Quiz {
     @Override
     public Player getHighScorer() {
         return HighScorer;
+    }
+
+    @Override
+    public void setId(int Id) {
+
+        this.Id = Id;
+
+    }
+
+    @Override
+    public int getId() {
+        return Id;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public boolean getStatus() {
+        return status;
     }
 
 

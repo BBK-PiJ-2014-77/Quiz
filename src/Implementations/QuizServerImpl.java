@@ -48,16 +48,20 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
     }
 
     @Override
-    public void setQuiz(Quiz NewQuiz) {
+    public int setQuiz(Quiz NewQuiz) {
 
+        NewQuiz.setId(QuizList.size());
         QuizList.add(NewQuiz);
         System.out.println("Quizadded");
+        return NewQuiz.getId();
 
     }
 
     @Override
     public Player endQuiz(int QuizNumber) {
-        return null;
+        QuizList.get(QuizNumber).setStatus(false);
+        return QuizList.get(QuizNumber).getHighScorer();
+
     }
 
     @Override
@@ -92,8 +96,12 @@ public class QuizServerImpl extends UnicastRemoteObject implements QuizServer {
                 int Ansernum = QuizList.get(i).returnAnswerNumber();
                 String HighScorer = QuizList.get(i).getHighScorer().GetName();
                 int HighScore = QuizList.get(i).getHighScorer().getScore();
+                boolean Status = QuizList.get(i).getStatus();
 
-                out.println(i + "," + QuizList.get(i).getName() + "," + Questnum + "," + Ansernum + "," + HighScorer + "," + HighScore);
+                String St = "";
+                if (Status){ St = "y";} else {St = "n";}
+
+                out.println(i + "," + QuizList.get(i).getName() + "," + Questnum + "," + Ansernum + "," + HighScorer + "," + HighScore + "," + St);
 
                 for (int j = 0; j < Questnum; j++) {
 

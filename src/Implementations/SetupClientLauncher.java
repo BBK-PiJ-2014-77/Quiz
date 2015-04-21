@@ -28,7 +28,11 @@ public class SetupClientLauncher {
             NewClient.addQuiz();
         }
         if (What.charAt(0) == 'E'){
-            NewClient.endQuiz();
+
+            System.out.println("What Id?");
+            String Idinput = in.nextLine();
+            int Id = Integer.parseInt(Idinput);
+            NewClient.endQuiz(Id);
         }
     }
 }

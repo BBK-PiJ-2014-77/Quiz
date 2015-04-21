@@ -15,7 +15,7 @@ public interface SetupClient {
     /**
      * Method to end a quiz on the server
      */
-    void endQuiz();
+    void endQuiz(int QuizId);
 
 
 }

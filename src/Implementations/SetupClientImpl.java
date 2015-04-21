@@ -83,7 +83,8 @@ public class SetupClientImpl implements SetupClient {
         QuizServer QuizService = (QuizServer) service;
 
         try {
-            QuizService.setQuiz(newQuiz);
+            int QuizId = QuizService.setQuiz(newQuiz);
+            System.out.println("The Id for this quiz is " + QuizId);
         } catch (RemoteException e) {
             e.printStackTrace();
             System.out.println("4");
@@ -122,10 +123,37 @@ public class SetupClientImpl implements SetupClient {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
     }
 
         @Override
-    public void endQuiz() {
+    public void endQuiz(int Id) {
+
+            Remote service = null;
+
+            try {
+                service = Naming.lookup("//localhost:1099/Interfaces.Quiz");
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+                System.out.println("1");
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                System.out.println("2");
+            } catch (RemoteException e) {
+                e.printStackTrace();
+                System.out.println("3");
+            }
+            QuizServer QuizService = (QuizServer) service;
+
+            try {
+                QuizService.endQuiz(Id);
+                System.out.println("The Quiz with Id " + Id + " has been ended");
+                System.out.println("The winner was " + QuizService.launchQuiz(Id).getHighScorer().GetName());
+            } catch (RemoteException e) {
+                e.printStackTrace();
+                System.out.println("4");
+            }
+
 
     }
 }

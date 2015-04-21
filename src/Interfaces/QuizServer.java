@@ -30,9 +30,10 @@ public interface QuizServer extends Remote {
     /**
      * Method to set a quiz
      * @param NewQuiz
+     * @return int QuizId
      */
 
-    void setQuiz(Quiz NewQuiz) throws RemoteException;
+    int setQuiz(Quiz NewQuiz) throws RemoteException;
 
     /**
      * Method to end quiz and return the winner

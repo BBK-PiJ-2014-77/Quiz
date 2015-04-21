@@ -44,13 +44,17 @@ public class QuizLauncherImpl implements QuizLauncher {
 
               //      System.out.println(Split1.length);
 
-                    if (Split1.length == 6){
+                    if (Split1.length == 7){
 
 
                         int quest = Integer.parseInt(Split1[2]);
                         int ans = Integer.parseInt(Split1[3]);
 
                 Quiz NewQuiz = new QuizImpl(Split1[1],quest, ans);
+                        if(Split1[6].charAt(0) == 'n') {
+                            boolean status = false;
+                            NewQuiz.setStatus(status);
+                        }
                         int QuestionNumber = Integer.parseInt(Split1[2]);
                         int AnswerNumber = Integer.parseInt(Split1[3]);
 
